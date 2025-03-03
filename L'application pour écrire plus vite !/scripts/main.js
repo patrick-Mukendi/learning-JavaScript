@@ -13,4 +13,3 @@ lancerJeu()
 // let optionSource = document.querySelectorAll(".optionSource input")
 
 // console.log(optionSource)
-

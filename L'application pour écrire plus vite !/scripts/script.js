@@ -10,28 +10,45 @@ function lancerJeu() {
     let inputEcriture = document.getElementById("inputEcriture")
     let i = 0;
     let score = 0;
+    let listChoices = listeMots
 
-    afficherProposition(listeMots[i])
+    afficherProposition(listChoices[i])
     btnValiderMot.addEventListener("click", ()=>{
         
         console.log(i)
-        console.log(listeMots[i])
+        console.log(listChoices[i])
 
-        if (inputEcriture.value == listeMots[i]){
+        if (inputEcriture.value == listChoices[i]){
             score++
         }
         i++
 
-        if(listeMots[i] == undefined){
+        if(listChoices[i] == undefined){
             afficherProposition("Jeu terminé")
             btnValiderMot.disabled = true
-            afficherResultat(score, listeMots.length) 
+            afficherResultat(score, listChoices.length) 
         }else{
-            afficherProposition(listeMots[i] )
+            afficherProposition(listChoices[i] )
         }
         inputEcriture.value = ""
-        afficherResultat(score, listeMots.length) 
+        afficherResultat(score, listChoices.length) 
     })
+
+    let optionSource = document.querySelectorAll("input[name=optionSource]")
+    console.log(optionSource)
+
+    for(let i = 0; i < optionSource.length; i++){
+        optionSource[i].addEventListener("change", (event) => {
+            if(event.target.value === "1"){
+                listChoices = listeMots
+            }else{
+                listChoices = listePhrases
+            }
+            afficherProposition(listChoices[i])
+        })
+     }
+ 
+
     
 }
 
