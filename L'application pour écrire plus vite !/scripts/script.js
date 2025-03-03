@@ -11,8 +11,20 @@ function lancerJeu() {
     let i = 0;
     let score = 0;
     let listChoices = listeMots
+    let optionSource = document.querySelectorAll("input[name=optionSource]")
+    console.log(optionSource)
 
-    afficherProposition(listChoices[i])
+    for(let i = 0; i < optionSource.length; i++){
+        optionSource[i].addEventListener("change", (event) => {
+            if(event.target.value === "1"){
+                listChoices = listeMots
+            }else{
+                listChoices = listePhrases
+            }
+            afficherProposition(listChoices[i])
+        })
+     }
+    // afficherProposition(listChoices[i])
     btnValiderMot.addEventListener("click", ()=>{
         
         console.log(i)
@@ -34,19 +46,7 @@ function lancerJeu() {
         afficherResultat(score, listChoices.length) 
     })
 
-    let optionSource = document.querySelectorAll("input[name=optionSource]")
-    console.log(optionSource)
-
-    for(let i = 0; i < optionSource.length; i++){
-        optionSource[i].addEventListener("change", (event) => {
-            if(event.target.value === "1"){
-                listChoices = listeMots
-            }else{
-                listChoices = listePhrases
-            }
-            afficherProposition(listChoices[i])
-        })
-     }
+   
  
 
     
