@@ -8,23 +8,29 @@ function lancerJeu() {
     // Initialisations
     let btnValiderMot = document.getElementById("btnValiderMot")
     let inputEcriture = document.getElementById("inputEcriture")
+    let optionSource = document.querySelectorAll("input[name=optionSource]")
     let i = 0;
     let score = 0;
     let listChoices = listeMots
-    let optionSource = document.querySelectorAll("input[name=optionSource]")
+   
     console.log(optionSource)
-
-    for(let i = 0; i < optionSource.length; i++){
+    afficherProposition(listChoices[i])
+    for( i = 0; i < optionSource.length; i++){
         optionSource[i].addEventListener("change", (event) => {
+            
             if(event.target.value === "1"){
                 listChoices = listeMots
+               
             }else{
                 listChoices = listePhrases
             }
+            
             afficherProposition(listChoices[i])
+           
         })
      }
-    // afficherProposition(listChoices[i])
+
+     i = 0
     btnValiderMot.addEventListener("click", ()=>{
         
         console.log(i)
